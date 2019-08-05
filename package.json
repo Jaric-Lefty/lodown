@@ -1,0 +1,22 @@
+{
+  "name": "lodown-jaric-lefty",
+  "version": "1.0.0",
+  "description": "My own lodown library",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha -- test/ -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaric-Lefty/lodown.git"
+  },
+  "author": "Jake N. Ricke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaric-Lefty/lodown/issues"
+  },
+  "homepage": "https://github.com/Jaric-Lefty/lodown#readme"
+}
