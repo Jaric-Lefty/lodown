@@ -460,7 +460,7 @@ module.exports.every = every;
  * Also returns only booleans values and nothing else. What a time to be alive.
  * 
  * @param {Object or Array} collection: A collection either an object or array.
- * @param {Function{ action: A callback function that youre testing for.
+ * @param {Function} action: A callback function that youre testing for.
  * 
  * @return: {Boolean}: Returns a boolean value whether if some of the values in the collection were false.
  *
