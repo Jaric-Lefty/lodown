@@ -376,7 +376,7 @@ module.exports.map = map;
 
 /*
  * pluck: Pluck takes an array of objects and the property you want to find and "plucks" it out into a new array.
- * It basically loops through the array and finds the exact value you specified in property and if it exists in the array of objects, it finds it and gives it to you. For example if you had a list of movies and only wanted the ratings.
+ * It basically loops through the array and finds the exact value you specified in property and if it exists in the array of objects, it finds it and gives it to you.
  * 
  * 
  * 
@@ -445,10 +445,11 @@ module.exports.every = every;
 
 
 /**
- * some: tests if all elements of calling action is all false, if so return false.
- * if any of elements are true, returns true. If funciton is not provided returns true if one element is truthy, else returns false. some tests if all the elements return false with the action (anon) function, if just one of them are true it returns false.
+ * some: Tests if all elements of calling action is all false, if so return false.
+ * If any of elements are true, returns true. If funciton is not provided returns true if one element is truthy, 
+ * else returns false. Some tests if all the elements return false with the action (anon) function, if just one of them are true it returns false.
  * if they are all false within the callback function then the some function returns true. If just one of the elements in the callback function return true then the some function returns false.
- * Also returns only booleans values and nothing else.
+ * JUST LIKE EVERY BUT THE OPPOSITE. Also returns only booleans values and nothing else.
  * 
  * @param {Object or Array} collection: A collection either an object or array.
  * @param {Function} action: A callback function that youre testing for.
