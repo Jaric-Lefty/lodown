@@ -12,7 +12,6 @@
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
  * 
- * @return {Array or Object}: Returns an array or object with the action function applied to it
  * 
  */
  
@@ -34,12 +33,15 @@ module.exports.each = each;
 
 
 /*    
- * identity: This function takes a value and returns that value. Not a very useful function. But returns a value nonetheless.
+ * identity: This function takes a value and returns that value.
  *
  * @param: {Array, Object, String, Number, Boolean, etc.} Literally any value.
  * 
  * @return {Given Value}: Returns the value unchanged.
+ *
  */
+ 
+ 
  function identity(value){
     return value;
 }
@@ -55,10 +57,8 @@ module.exports.identity = identity;
  *
  * @param: {Number, String, Function, Boolean, Undefined, Array, Object, Null, Date} value: Any given value.
  * 
- * @return: {given value} typeof value: Returns the type of given value.
- 
- * *
- * */
+ * @return: {Given Value} typeof value: Returns the type of given value.
+ */
  
  function typeOf(value){
     
@@ -89,7 +89,7 @@ module.exports.identity = identity;
       return "object";
      }
         return typeof(value);
-};
+}
 
 module.exports.typeOf = typeOf;
 
@@ -136,11 +136,8 @@ module.exports.first = first;
 
 /**
  * last: This function is almost exactly similar to first except it starts at the end of the array instead. So instead of giving you the first items, this function gives you the values of the last items
+ * If array is not given it returns a blank array. [] If number is not given it returns the last element in <array>
  * 
- * If array is not given it returns a blank array. []
- * If number is not given it returns the last element in <array>
- * 
- * in an array sliced. 
  *
  * @param {Array} array: An array.
  * @param {Number} number: a number of any value.
@@ -163,13 +160,14 @@ module.exports.first = first;
     }
     
     
-};
+}
+
 module.exports.last = last;
 
     
 /**
- * indexOf: This function takes a value and returns whatever value is in the index that matches the given value. Simeple as that,
- * It doesn't check if its an array because it only excepts arrays. If the value doesnt match any index in the array or an array is not given it returns -1 instead.
+ * indexOf: This function takes a value and returns whatever value is in the index that matches the given value.
+*  If the value doesnt match any index in the array or an array is not given it returns -1 instead.
  * 
  * 
  * 
@@ -198,7 +196,7 @@ module.exports.indexOf = indexOf;
 
 /**
  * contains: This function only takes an array and value and and tests if that value matches anything in that array, if it does it returns true.
- * Uses a ternary statement to determine the outcome of the boolean value. If the array doesn't contain anything that matches the given value, it returns false.
+ * If the array doesn't contain anything that matches the given value, it returns false.
  * 
  * Basically a big boolean function that tests if something is inside of something else. Only takes arrays.
  *
@@ -221,7 +219,7 @@ module.exports.contains = contains;
 
 
 /**
- * unique: This function takes an array with duplicates and removes all the duplicates and returns a nice new array with all of them removed.
+ * unique: This function takes an array with duplicates and removes all the duplicates and returns a new array with all of them removed.
  * It only gives us the UNIQUE values!
  * 
  * 
@@ -244,9 +242,8 @@ module.exports.unique = unique;
 
 
 /**
- * filter: Boy howdy is filter useful. filter loops through each element in the array and applies the action (anon) function to each value.
- * Essentialy you could use filter to find and coordinate what you want out of an array. If you just want the even numbers you can do that, if you just want words longer than 6
- * you can do that too. The possibilites are endless. It returns a new array, the provided array remains unchanged.
+ * filter: Filter loops through each element in the array and applies the action (anon) function to each value.
+ * It returns a new array, the provided array remains unchanged.
  * 
  * @param {Array} array: An array with values.
  * @param {Function} action: The callback function providing what your filtering for.
@@ -279,11 +276,6 @@ module.exports.filter = filter;
 /**
  * reject: Returns a new array of elemts for which calling function returned false.
  * 
- * Reject is a lot like filter, in fact it uses the filter function in it! Except this one uses the action (anon) function to reject values.
- * This function returns a new array of elements for which the action function returned false. So if its not true then put it in this array and return that.
- * 
- * The opposite of the filter function.
- * 
  * @param {Array} array: An array of values.
  * @param {Function} action: The callback function that you want to filter by.
  * 
@@ -310,12 +302,13 @@ module.exports.reject = reject;
 
 
 /**
- * partition: Partition gives us two arrays. Wow. With this function we can 'partition' our bigass array until values that return true with the action function and values that return false.
+ * partition: Partition gives us two arrays. With this function we can 'partition' our array until values that return true with the action function and values that return false.
+ *  It creates two sub arrays filled with truth and falsey values depending on the outcome of the callback function.
  * 
  * Essentially this function combines the previous two of filter and reject into one function, Useful for big arrays or obtaining truthyness values.
  * 
- * param1: {Array} array: An array with values.
- * param2: {Function} action: The callback function that passes in the test to the array.
+ * @param {Array} array: An array with values.
+ * @param {Function} action: The callback function that passes in the test to the array.
  * 
  * @return: {Array}: Returns an array that is made up of 2 sub arrays:
  * 0 index contains an array for all the values which <function> returned true.
@@ -351,9 +344,7 @@ module.exports.partition = partition;
 
 /**
  * map: MAP is another one of the extra useful funcitons, because it is essentially the same as filter in that it loops over the collection and applies the function to each element, except map
- * MODIFIES the values using its action (anon) function. Returning a whole new array with the modified values. Useful for changing large sets of data in one go. One easy way to remember
- * is that Filter and find both begin with F, while Map and modify both begin with M. This particular map is also a little different because it works on objects too unlike the native .map
- * Which only works on arrays.
+ * MODIFIES the values using its action (anon) function. Returning a whole new array with the modified values.
  * 
  * 
  * @param: {Object or Array} collection: Either an Object or Array.
@@ -384,13 +375,13 @@ module.exports.map = map;
 
 
 /*
- * pluck: My favorite out of all these functions mostly because I just love saying pluck. Pluck takes an array of objects and the property you want to find and "plucks" it out into a new array.
+ * pluck: Pluck takes an array of objects and the property you want to find and "plucks" it out into a new array.
  * It basically loops through the array and finds the exact value you specified in property and if it exists in the array of objects, it finds it and gives it to you. For example if you had a list of movies and only wanted the ratings.
- * Pluck would be useful for provided you with an array of this the ratings for each movie.
+ * 
  * 
  * 
  * @param: {Array} array: An array of objects
- * @param: {Object.property} property: A key value property in the array.
+ * @param: {String} property: A key value in the array.
  * 
  * @return: {Array}: Returns an array of the values of the provided key.
  *
@@ -410,8 +401,8 @@ module.exports.pluck = pluck;
 
 /**
  * every: This function tests a collection and uses the action (anon) function to test if every element returns true, if all of them return true then you get a boolean value of true!
- * If just one of them returns false, then you get a boolean value of false. True to the functions name, EVERY element has to be true in order for it to be true, aint no half stepping with Every.
- * if a function is not provided returns true if every element in the collection is truthy. Otherwise returns false. Will only ever return a boolean value of true or false. Useful for checking arrays that have truthy values.
+ * If just one of them returns false, then you get a boolean value of false. True to the functions name, EVERY element has to be true in order for it to be true.
+ * If a function is not provided returns true if every element in the collection is truthy. Otherwise returns false. Will only ever return a boolean value of true or false. Useful for checking arrays that have truthy values.
  * 
  * 
  * @param {Object or Array} collection: A collection of data either an object or array.
@@ -455,9 +446,9 @@ module.exports.every = every;
 
 /**
  * some: tests if all elements of calling action is all false, if so return false.
- * if any of elements are true, returns true. If funciton is not provided returns true if one element is truthy, else returns false. JUST LIKE EVERY BUT THE OPPOSITE. This badboy tests if all the elements return false with the action (anon) function, if just one of them are true it returns false.
- * So on some weird logic, if they are all false within the callback function then the some function returns true. If just one of the elements in the callback function return true then the some function returns false.
- * Also returns only booleans values and nothing else. What a time to be alive.
+ * if any of elements are true, returns true. If funciton is not provided returns true if one element is truthy, else returns false. some tests if all the elements return false with the action (anon) function, if just one of them are true it returns false.
+ * if they are all false within the callback function then the some function returns true. If just one of the elements in the callback function return true then the some function returns false.
+ * Also returns only booleans values and nothing else.
  * 
  * @param {Object or Array} collection: A collection either an object or array.
  * @param {Function} action: A callback function that youre testing for.
@@ -498,13 +489,13 @@ module.exports.some = some;
 
 
 /**
- * reduce: Oh boy what can I say about Reduce. This workhorse of a function is useful for just about anything you want to do in Javascript. Long story short it returns a single value which is the seed that you provide it.
+ * reduce: This workhorse of a function is useful for just about anything you want to do in Javascript. Long story short it returns a single value which is the seed that you provide it.
  * Say you had an array of numbers and wanted to find the sum of all numbers in there, then reduce is your function, Reduce loops over the array and adds each number to an accumulator which can equal your seed, later it returns the seed
  * with all values added to it. Think of the seed as your starting place
  *
  * On the very first iteration we can use <seed> as the "previous result".
  * Uses the return value of <function> as the "previous result" on the next iteration.
- * Reduce is the best yaya!
+ * 
  * 
  * @param {Array} array: An array with values.
  * @param {Function} action: The callback function.
